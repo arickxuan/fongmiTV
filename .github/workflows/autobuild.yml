@@ -29,15 +29,11 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Pkgs
-        run: yarn install --frozen-lockfile
-      - name: Get Version
-        run: node -p -e '`VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
       # - name: Setup Debug Session
         # uses: csexton/debugger-action@master
       - name: Build
         run: | 
-          cd ./android
+          chmod +x ./gradlew
           ./gradlew assembleRelease
       - name: Generate Changelog
         run: echo github.event_name
@@ -64,14 +60,10 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Pkgs
-        run: yarn install --frozen-lockfile
-      - name: Get Version
-        run: node -p -e '`VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
       # - name: Setup Debug Session
         # uses: csexton/debugger-action@master
       - name: Build
         run: | 
-          cd ./android
+          chmod +x ./gradlew
           ./gradlew assembleRelease
       
